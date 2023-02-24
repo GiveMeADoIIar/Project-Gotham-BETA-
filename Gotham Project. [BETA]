@@ -1,0 +1,103 @@
+--Never use on the streets GiveMeAdoIIar here to save your account!
+
+local GothamProject = Instance.new("ScreenGui")
+local ImageLabel = Instance.new("ImageLabel")
+
+ScreenGui.Parent = game.CoreGui
+GothamProject.Name = "Gotham Project."
+GothamProject.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+GothamProject.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageLabel.Parent = GothamProject
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.Position = UDim2.new(0.0244263504, 0, 0.228130355, 0)
+ImageLabel.Size = UDim2.new(0, 145, 0, 341)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=12599060256"
+
+game.StarterGui:SetCore("SendNotification", {Title = "ProjGotham.",
+Text = "''Batsuit Activated.''",
+Icon = "http://www.roblox.com/asset/?id=12599121944",
+Duration = 7})
+
+wait(3)
+
+--Never use on the streets GiveMeAdoIIar here to save your account!
+local speed = 55 -- set this lower to make it slower
+local bodyvelocityenabled = true -- set this to false if you are getting kicked
+
+local Imput = game:GetService("UserInputService")
+local Plr = game.Players.LocalPlayer
+local Mouse = Plr:GetMouse()
+
+function To(position)
+local Chr = Plr.Character
+if Chr ~= nil then
+local ts = game:GetService("TweenService")
+local char = game.Players.LocalPlayer.Character
+local hm = char.HumanoidRootPart
+local dist = (hm.Position - Mouse.Hit.p).magnitude
+local tweenspeed = dist/tonumber(speed)
+local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
+local tp = {CFrame = CFrame.new(position)}
+ts:Create(hm, ti, tp):Play()
+if bodyvelocityenabled == true then
+local bv = Instance.new("BodyVelocity")
+bv.Parent = hm
+bv.MaxForce = Vector3.new(100000,100000,100000)
+bv.Velocity = Vector3.new(0,0,0)
+wait(tonumber(tweenspeed))
+bv:Destroy()
+end
+end
+end
+
+Imput.InputBegan:Connect(function(input)
+   if input.UserInputType == Enum.UserInputType.MouseButton1 and Imput:IsKeyDown(Enum.KeyCode.LeftControl) then
+       To(Mouse.Hit.p)
+   end
+end)
+
+--Never use on the streets GiveMeAdoIIar here to save your account!
+local xrayHotkey = Enum.KeyCode.X
+
+local uis = game:GetService("UserInputService")
+
+
+local xrayOn = false
+
+
+uis.InputBegan:Connect(function(inp, processed)
+ 
+ 
+ if processed then return end
+ 
+ 
+ if inp.KeyCode == xrayHotkey then
+  
+  
+  xrayOn = not xrayOn
+  
+  
+  for i, descendant in pairs(workspace:GetDescendants()) do
+    
+   if descendant:IsA("BasePart") then
+    
+    if xrayOn then
+     
+     if not descendant:FindFirstChild("OriginalTransparency") then
+      
+      local originalTransparency = Instance.new("NumberValue")
+      originalTransparency.Name = "OriginalTransparency"
+      originalTransparency.Value = descendant.Transparency
+      originalTransparency.Parent = descendant
+     end
+     
+     descendant.Transparency = 0.5
+     
+    else
+     descendant.Transparency = descendant.OriginalTransparency.Value
+    end
+   end
+  end
+ end
+end)
