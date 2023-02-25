@@ -1,19 +1,20 @@
 --Never use on the streets GiveMeAdoIIar here to save your account!
 
-local GothamProject = Instance.new("ScreenGui")
+local ScreenGui = Instance.new("ScreenGui")
 local ImageLabel = Instance.new("ImageLabel")
 
+--Properties:
+
 ScreenGui.Parent = game.CoreGui
-GothamProject.Name = "Gotham Project."
-GothamProject.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-GothamProject.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-ImageLabel.Parent = GothamProject
-ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.Position = UDim2.new(0.0244263504, 0, 0.228130355, 0)
-ImageLabel.Size = UDim2.new(0, 145, 0, 341)
+ImageLabel.Parent = ScreenGui
+ImageLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BackgroundTransparency = 0.500
+ImageLabel.Position = UDim2.new(0.0133234654, 0, 0.197255582, 0)
+ImageLabel.Size = UDim2.new(0, 175, 0, 379)
 ImageLabel.Image = "http://www.roblox.com/asset/?id=12599060256"
-
 game.StarterGui:SetCore("SendNotification", {Title = "ProjGotham.",
 Text = "''Batsuit Activated.''",
 Icon = "http://www.roblox.com/asset/?id=12599121944",
