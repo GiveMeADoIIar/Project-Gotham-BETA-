@@ -23,7 +23,7 @@ Duration = 7})
 wait(3)
 
 --Never use on the streets GiveMeAdoIIar here to save your account!
-local speed = 55 -- set this lower to make it slower
+local speed = 100 -- set this lower to make it slower
 local bodyvelocityenabled = true -- set this to false if you are getting kicked
 
 local Imput = game:GetService("UserInputService")
